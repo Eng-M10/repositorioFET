@@ -21,6 +21,11 @@ class Document{
             
             return $this->_db->get("document",array("tipo_trabalho", '=', $name));
     }
+    public function getDocumentByUserID($id){
+
+        return $this->_db->get("document",array("id_user", '=', $id));
+
+    }
     public function deleteDocument($name){
             return $this->_db->delete("document",array("titulo"=>$name));
     }
@@ -49,6 +54,27 @@ class Document{
         } else {
             echo "<li>No documents found.</li>";
         }
+    }
+
+    public function showAllDocumentsByUserID($id){
+
+        $documents = $this->getDocumentByUserID($id);
+        if ($documents->count() > 0) {
+            echo "<tbody>";
+            foreach ($documents->results() as $document) {
+                
+                echo "<tr>";
+                echo "<td>".$document->titulo."</td>";
+                echo "<td>".$document->tipo_trabalho."</td>";
+                echo "<td>".$document->data_submissao."</td>";
+                echo "</tr>";
+            }
+            echo "</tbody>";
+        } else {
+            echo "<li>No documents found.</li>";
+        }
+
+
     }
 
 }

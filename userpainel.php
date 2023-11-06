@@ -2,6 +2,7 @@
     require_once 'core/init.php';
 
     $user = new User();
+    $doc = new Document();
 
     if (!$user->isLoggedIn()) {
         Redirect::to('login.php');
@@ -82,6 +83,16 @@
     <!-- Lista de Documentos -->
     <div class="document-list space-y-4">
         <h2 class="text-xl font-semibold mb-4">Seus documentos</h2>
+        <table class="table text-gray-400 border-separate space-y-6 text-sm">
+        <thead class="bg-blue-500 text-white">
+                <tr>
+                    <th>Título</th>
+                    <th>Tipo de Trabalho</th>
+                    <th>Data Submissão</th>
+                </tr>
+            </thead>
+            <?php $doc->showAllDocumentsByUserID(1); ?>
+        </table>
         
 
 

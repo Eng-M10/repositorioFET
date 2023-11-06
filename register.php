@@ -11,10 +11,10 @@ if (Input::exists()) {
                 'max' => 20,
                 'unique' => 'users',
             ),
-            /*'email' => array(
+            'email' => array(
                 'required' => true,
-
-            ),*/
+                'email' => true,
+            ),
             'password' => array(
                 'required' => true,
                 'min' => 6,
@@ -40,6 +40,7 @@ if (Input::exists()) {
                 $user->create(array(
                     'username' => Input::get('username'),
                     'password' => Hash::make(Input::get('password'), $salt),
+                    'email' => Input::get('email'),
                     'salt' => $salt,
                     'name' => Input::get('name'),
                     'joined' => date('Y-m-d H:i:s'),
@@ -131,6 +132,12 @@ if (Input::exists()) {
                         <i class="bi bi-person"></i>
                     </span>
                 <input type="text" class="form-control" name="username" placeholder="Username" id="username" value="<?= escape(Input::get('username')) ?>" autocomplete="off">
+            </div>
+            <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="bi bi-person"></i>
+                    </span>
+                <input type="text" class="form-control" name="email" placeholder="Email" id="email" value="<?= escape(Input::get('email')) ?>" autocomplete="off">
             </div>
             
             <div class="input-group mb-3">
