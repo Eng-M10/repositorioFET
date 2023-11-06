@@ -3,6 +3,7 @@
 
     $user = new User();
     $doc = new Document();
+    $data = $user->data();
 
     if (!$user->isLoggedIn()) {
         Redirect::to('login.php');
@@ -83,8 +84,8 @@
     <!-- Lista de Documentos -->
     <div class="document-list space-y-4">
         <h2 class="text-xl font-semibold mb-4">Seus documentos</h2>
-        <table class="table text-gray-400 border-separate space-y-6 text-sm">
-        <thead class="bg-blue-500 text-white">
+        <table class="table text-black-700 border-separate space-y-6 text-sm">
+        <thead class="bg-blue-500 text-black">
                 <tr>
                     <th>Título</th>
                     <th>Tipo de Trabalho</th>
@@ -146,22 +147,20 @@
         <h2 class="text-xl font-semibold mb-4">Informações do Perfil</h2>
         <div class="mb-4">
             <label for="namefield" class="block text-gray-700">Nome:</label>
-            <input type="text" class="w-full border border-gray-300 rounded px-4 py-2" id="namefield" name="username" value="">
+            <input type="text" class="w-full border border-gray-300 rounded px-4 py-2" id="namefield" name="username" value="<?=escape($data->name)?>">
         </div>
         <div class="mb-4">
             <label for="emailfield" class="block text-gray-700">Email:</label>
-            <input type="text"  class="w-full border border-gray-300 rounded px-4 py-2" id="emailfield" name="email" value="">
+            <input type="text"  class="w-full border border-gray-300 rounded px-4 py-2" id="emailfield" name="email" value="<?=escape($data->email)?>">
         </div>
         <div class="mb-4">
             <label for="deptfield" class="block text-gray-700">Departamento:</label>
-            <input type="text"   class="w-full border border-gray-300 rounded px-4 py-2" id="deptfield" name="departamento" value="">
-        </div>
-        <div class="mb-4">
-            <label for="passwordfield" class="block text-gray-700">Palavra-Passe:</label>
-            <input type="password"  class="w-full border border-gray-300 rounded px-4 py-2" id="passwordfield" name="password" value="">
+            <input type="text"  class="w-full border border-gray-300 rounded px-4 py-2" id="deptfield" name="departamento" value= "<?= escape($data->username)?>" >
         </div>
         <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Editar</button>
         <button type="button" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Salvar</button>
+        <a href="./changepassword.php" class="btn">Change Password</a>
+        
     </form>
 </div>
 
