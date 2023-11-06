@@ -19,33 +19,33 @@ class Validate
                 $value = $source[$item];
                 $item = escape($item);
                 if ($rule === 'required' && empty($value)) {
-                    $this->addError("{$item} is required");
+                    $this->addError("Preencha o campo {$item}");
                 } else if(!empty($value)) {
                     switch ($rule) { 
                         case 'min':
                             if (strlen($value) < $rule_value) {
-                                $this->addError("<p>{$item} must to be a minimum of {$rule_value} characters ");
+                                $this->addError("<p>{$item} precisa de no minimo {$rule_value} caracteres ");
                             } 
                             break;
                         case 'max':
                             if (strlen($value) > $rule_value) {
-                                $this->addError("{$item} must to be a maximum of {$rule_value} characters");
+                                $this->addError("{$item} nao pode ultrapassar {$rule_value} caracteres");
                             } 
                             break;
                         case 'matches':
                             if ($value != $source[$rule_value]) {
-                                $this->addError("{$rule_value} must to match {$item}");
+                                $this->addError("{$rule_value} deve coincidir com {$item}");
                             }
                             break;
                         case 'unique':
                             $check = $this->_db->get($rule_value, array($item, '=', $value));
                             if ($check->count()) {
-                                $this->addError("{$item} already exists.");
+                                $this->addError("{$item} ja  existe.");
                             }
                             break;
                         case 'email':
                             if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                                $this->addError("{$item} is not a valid email");
+                                $this->addError("{$item} nao e um email valido");
                             }
                             break;
                     }

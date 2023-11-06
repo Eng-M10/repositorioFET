@@ -1,3 +1,17 @@
+<?php
+require_once 'core/init.php';
+$user = new User();
+if ($user->isLoggedIn()) {
+   if(!$user->hasPermission('admin')){
+    Redirect::to('index.php');
+   }
+        
+}else{
+    Redirect::to('index.php'); 
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

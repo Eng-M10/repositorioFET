@@ -153,10 +153,10 @@
             <label for="emailfield" class="block text-gray-700">Email:</label>
             <input type="text"  class="w-full border border-gray-300 rounded px-4 py-2" id="emailfield" name="email" value="<?=escape($data->email)?>">
         </div>
-        <div class="mb-4">
+       <!-- <div class="mb-4">
             <label for="deptfield" class="block text-gray-700">Departamento:</label>
-            <input type="text"  class="w-full border border-gray-300 rounded px-4 py-2" id="deptfield" name="departamento" value= "<?= escape($data->username)?>" >
-        </div>
+            <input type="text"  class="w-full border border-gray-300 rounded px-4 py-2" id="deptfield" name="departamento" value= "?" >
+        </div>-->
         <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Editar</button>
         <button type="button" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Salvar</button>
         <a href="./changepassword.php" class="btn">Change Password</a>
