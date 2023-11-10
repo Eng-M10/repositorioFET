@@ -50,7 +50,7 @@ class DB
         return $this;
     }
 
-    private function action($action, $table, $where = array())
+    private function action($action, $table, $where = array(),$coluna = array())
     {
         if (count($where) === 3) {
             $operators = array('=', '>', '<', '>=', '<=');
@@ -68,6 +68,13 @@ class DB
         }
         if(empty($where)){
             $sql = "{$action} FROM {$table}";
+            if (!$this->query($sql)->error()) {
+                return $this;
+            }
+        }
+        if(!empty($coluna)){
+            $coluna = implode(', ', $coluna);
+            $sql = "{$action} {$coluna} FROM {$table}";
             if (!$this->query($sql)->error()) {
                 return $this;
             }
