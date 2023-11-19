@@ -48,6 +48,12 @@ class Validate
                                 $this->addError("{$item} nao e um email valido");
                             }
                             break;
+                        case 'file':
+                                if (!isset($value['name']) || empty($value['name'])) {
+                                    $this->addError("Selecione um arquivo para o campo {$item}");
+                                }
+                                break;
+                        
                     }
                 }
             }

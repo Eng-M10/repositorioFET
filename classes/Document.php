@@ -8,8 +8,8 @@ class Document{
         $this->_db = DB::getInstance();
     }
 
-    public function cleanForm(){
-        
+    public function getDocumentID(){
+        return $this->_db->get("document",);
     }
 
     public function getAllDocuments(){
@@ -35,7 +35,9 @@ class Document{
     }
 
     public function createDocument($fields){
-            return $this->_db->insert("document",$fields);
+        if (!$this->_db->insert('document', $fields)) {
+            throw new Exception('Ocorreu um problema ao Adicionar o Documento!');
+        }
     }
 
     public function showAllDocumentsByType($type){
@@ -51,6 +53,25 @@ class Document{
                 echo "</tr>";
             }
             echo "</tbody>";
+        } else {
+            echo "<li>No documents found.</li>";
+        }
+    }
+    
+    public function showAllDocuments(){
+        $documents = $this->getAllDocuments();
+        if ($documents->count() > 0) {
+         
+            foreach ($documents->results() as $document) {
+                
+                echo "<tr>";
+                echo "<td>".$document->titulo."</td>";
+                echo "<td>".$document->autores."</td>";
+                echo "<td>".$document->tipo_trabalho."</td>";
+                echo "<td>".$document->data_submissao."</td>";
+                echo "</tr>";
+            }
+           
         } else {
             echo "<li>No documents found.</li>";
         }
@@ -75,6 +96,36 @@ class Document{
         }
 
 
+    }
+
+    public function upload($file): string {
+        
+        $upload_dir = __DIR__ . "./../resources/pdf/";
+    
+        // Verificar se o arquivo foi enviado sem erros
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            return "error";
+        }
+    
+        // Verificar se o tipo de arquivo é permitido (ajuste conforme necessário)
+        $allowed_types = ['pdf', 'doc', 'docx'];
+        $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    
+        if (!in_array(strtolower($file_extension), $allowed_types)) {
+            return "error";
+        }
+    
+        // Gerar um nome único para o arquivo
+        $unique_filename = uniqid() . '_' . $file['name'];
+        $target_path = $upload_dir . $unique_filename;
+    
+        // Mover o arquivo para o diretório de upload
+        if (move_uploaded_file($file['tmp_name'], $target_path)) {
+            $url = "http://localhost/repositorioFET/resources/pdf/" . $unique_filename;
+            return $url;
+        } else {
+            return "error";
+        }
     }
 
 }

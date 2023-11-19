@@ -20,7 +20,13 @@ $GLOBALS['config'] = [
 ];  
 
 spl_autoload_register(function($class) {
-    require 'classes/'. $class.'.php';
+
+    if(file_exists('classes/'.$class.'.php')){
+    require 'classes/'. $class.'.php';}
+    else{
+        require 'classes/fpdf/'. $class.'.php';   
+    }
+
 });
 
 require_once 'functions/sanitize.php';

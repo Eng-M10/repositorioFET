@@ -28,6 +28,13 @@ if (Input::exists()) {
                 'min' => 2,
                 'max' => 50,
             ),
+            'departamento' =>array(
+                'required' => true,
+            ),
+            'entidade' =>array(
+                
+               'required' => true,
+            )
         )
         );
 
@@ -43,6 +50,8 @@ if (Input::exists()) {
                     'email' => Input::get('email'),
                     'salt' => $salt,
                     'name' => Input::get('name'),
+                    'departamento' => Input::get('departamento'),
+                    'entidade' => Input::get('entidade'),
                     'joined' => date('Y-m-d H:i:s'),
                     'group' => 1,
                 ));
@@ -139,7 +148,39 @@ if (Input::exists()) {
                     </span>
                 <input type="text" class="form-control" name="email" placeholder="Email" id="email" value="<?= escape(Input::get('email')) ?>" autocomplete="off">
             </div>
-            
+            <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i class="bi bi-person"></i>
+                    </span>
+                <input type="text" class="form-control" placeholder="Name" name="name" id="name" value="<?= escape(Input::get('name')) ?>">
+            </div>
+            <div class="input-group mb-3 d-flex">
+                    <span class="input-group-text">
+                        <i class="bi bi-person"></i>
+                    </span>
+                  <select name="entidade" id="type" class="form-select form-select-sm" aria-label="small select example">
+                    <option value="Estudante">Estudante</option>
+                    <option value="Docente">Docente</option>
+                    <option value="Funcionario">Funcionario</option>
+                    <option value="Outro">Outro</option>
+                  </select>
+                </div>
+                <div class="input-group mb-3 d-flex">
+                    <span class="input-group-text">
+                        <i class="bi bi-person"></i>
+                    </span>
+                    <select name="departamento" id="type"  class="form-select form-select-sm" aria-label="small select example" >
+                    <option value="Informatica">Informatica</option>
+                    <option value="Eletronica">Eletronica</option>
+                    <option value="Funcionario">Funcionario</option>
+                    <option value="Outro">Outro</option>
+                  </select>
+                </div>
+
+
+
+
+
             <div class="input-group mb-3">
                     <span class="input-group-text">
                         <i class="bi bi-person"></i>
@@ -152,12 +193,7 @@ if (Input::exists()) {
                     </span>
                 <input type="password" class="form-control" placeholder="Confirm password" name="password_again" id="password_again">
             </div>
-            <div class="input-group mb-3">
-                    <span class="input-group-text">
-                        <i class="bi bi-person"></i>
-                    </span>
-                <input type="text" class="form-control" placeholder="Name" name="name" id="name" value="<?= escape(Input::get('name')) ?>">
-            </div>
+      
             <input type="hidden" name="token" value="<?= Token::generete() ?>">
             <button type="submit" class="btn btn-primary btn-block">Register</button>
         </form>

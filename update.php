@@ -17,12 +17,18 @@ if (Input::exists()) {
                 'min' => 2,
                 'max' => 50,
             ),
+            'email' => array(
+                'required' => true,
+                'min' => 2,
+                'email' => true
+            )
         ));
 
         if ($validation->passed()) {
             try {
                 $user->update(array(
                     'name'=> Input::get('name'),
+                    'email'=>Input::get ('email')
                 ));
 
                 Session::flash('home', 'Your details have been updated.');
@@ -39,12 +45,35 @@ if (Input::exists()) {
 }
 
 ?>
-<form action="" method="post">
-    <div class="field">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<?=escape($user->data()->name)?>">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Your Form</title>
+</head>
+<body>
 
-        <input type="submit" value="Update">
-        <input type="hidden" name="token" value="<?=Token::generete()?>">
-    </div>
-</form>
+<div class="container mt-5">
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" id="name" value="<?= escape($user->data()->name) ?>">
+        </div>
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="text" class="form-control" name="email" id="email" value="<?= escape($user->data()->email) ?>">
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Update">
+        <input type="hidden" name="token" value="<?= Token::generete() ?>">
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

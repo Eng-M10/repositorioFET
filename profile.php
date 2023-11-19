@@ -14,6 +14,8 @@ if (!$username = Input::get('user')) {
     ?>
     <h3><?= escape($data->username) ?></h3>
     <p>Full name: <?= escape($data->name) ?></p>
+    <p>Email : <?= escape($data->email) ?></p>
+    <p>Departamento: <?= escape($data->departamento)?></p>
     
     <ul>
         <li><a href="update.php">Update details</a></li>

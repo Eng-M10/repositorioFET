@@ -108,67 +108,7 @@ $doc = new Document();
         </form>
 
         <!-- Cards de informações -->
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <!-- Exemplo de card -->
-            <div class="col">
-                <div class="card">
-                    <img src="./resources/img/leviloot.jpg" class="card-img-top" alt="Imagem do Artigo">
-                    <div class="card-body">
-                        <h5 class="card-title">Desafio dos Trnasportes Publicos Urbanos</h5>
-                        <p class="card-text">Autor: Jesus Navas</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="./resources/img/andykelly.jpg" class="card-img-top" alt="Imagem do Artigo">
-                    <div class="card-body">
-                        <h5 class="card-title">Inteligência Artificial vs Desenvolvimento Humano</h5>
-                        <p class="card-text">Autor: Marcus Rashford</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="./resources/img/karthiksridasyam.jpg" class="card-img-top" alt="Imagem do Artigo">
-                    <div class="card-body">
-                        <h5 class="card-title">Dark Social Media</h5>
-                        <p class="card-text">Autor: Rasmus Helltier</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="./resources/img/patricktomasso.jpg" class="card-img-top" alt="Imagem do Artigo">
-                    <div class="card-body">
-                        <h5 class="card-title">T</h5>
-                        <p class="card-text">Autor: Patrick Tomasso</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="imagem1.jpg" class="card-img-top" alt="Imagem do Artigo">
-                    <div class="card-body">
-                        <h5 class="card-title">Título do Artigo 1</h5>
-                        <p class="card-text">Autor: Autor 1</p>
-                        <p class="card'text">12-03-2023</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col">
-                <div class="card">
-                    <img src="imagem1.jpg" class="card-img-top" alt="Imagem do Artigo">
-                    <div class="card-body">
-                        <h5 class="card-title">Título do Artigo 1</h5>
-                        <p class="card-text">Autor: Autor 1</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Adicione mais cards conforme necessário -->
-        </div>
+        
 
         <!-- Preview de documentos carregados recentemente em forma de tabela -->
         <h2 class="mt-5">Monografias</h2>
