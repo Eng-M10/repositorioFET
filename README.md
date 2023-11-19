@@ -1,6 +1,6 @@
 # FET - Repositório Científico
 
-Bem-vindo ao Repositório Científico da Faculdade de Engenharias da UP-Maputo (FET). Este projeto foi desenvolvido para fornecer uma plataforma centralizada para armazenar, gerenciar e compartilhar trabalhos científicos produzidos pelos alunos e professores da faculdade.
+Bem-vindo ao Repositório Científico da Faculdade de Engenharias da UP-Maputo (FET). Este projeto foi desenvolvido para fornecer uma plataforma centralizada para armazenar, gerenciar e compartilhar trabalhos científicos produzidos pelos estudantes e professores da faculdade.
 
 ## Funcionalidades
 
@@ -19,7 +19,7 @@ Bem-vindo ao Repositório Científico da Faculdade de Engenharias da UP-Maputo (
 1. Clone o repositório para o seu ambiente local:
 
     ```bash
-    git clone https://github.com/seu-usuario/fet-repositorio.git
+    git clone https://github.com/Eng-M10/repositorioFET.git
     ```
 
 2. Configure o banco de dados MySQL com as credenciais apropriadas em `config/database.php`.
@@ -31,7 +31,7 @@ Bem-vindo ao Repositório Científico da Faculdade de Engenharias da UP-Maputo (
 5. Acesse o aplicativo através do navegador web:
 
     ```
-    http://localhost/fet-repositorio
+    http://localhost/repositorioFET
     ```
 
 ## Contribuição
