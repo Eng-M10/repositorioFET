@@ -27,6 +27,9 @@ class Document{
         return $this->_docarquivo;
     }
 
+
+
+
     public function __construct(){
         $this->_db = DB::getInstance();
     }
@@ -40,7 +43,6 @@ class Document{
             return $this->_db->get("document",array("tipo_trabalho", '=', $name));
     }
     public function getDocumentByID($id){
-
             return $this->_db->get("document",array("id_doc", '=', $id));
     }
 
@@ -61,14 +63,17 @@ class Document{
     }
 
     public function getDocumentByUserID($id){
-
         return $this->_db->get("document",array("id_user", '=', $id));
-
     }
     public function createDocument($fields){
         if (!$this->_db->insert('document', $fields)) {
             throw new Exception('Ocorreu um problema ao Adicionar o Documento!');
         }
+    }
+
+    public function updateDocument(){
+
+        
     }
     public function deleteDocumentByID($id){
         return $this->_db->delete('document', array("id_doc","=",$id));
