@@ -130,6 +130,28 @@ class DB
 
         return false;
     }
+    public function updatedoc($id, $fields)
+    {
+        $set = '';
+        $x = 1;
+
+        foreach ($fields as $name => $value) {
+            $set .= "{$name} = ?";
+            if ($x < count($fields)) {
+                $set .= ', '; 
+            } 
+            $x++;
+        }
+
+        $sql = "UPDATE document SET {$set} WHERE id_doc = {$id}";
+
+        if (!$this->query($sql, $fields)->error()) {
+            return true;
+        }
+
+        return false;
+    }
+
 
 
     public function results()

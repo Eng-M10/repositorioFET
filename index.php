@@ -106,42 +106,47 @@ $doc = new Document();
 
         <!-- Preview de documentos carregados recentemente em forma de tabela -->
         <h2 class="mt-5">Monografias</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Autor</th>
-                    <th>Data Submissão</th>
-                </tr>
-            </thead>
-            <?php $doc->showAllDocumentsByType("monografia"); ?>
-        </table>
+        <div class="col-md-12">
+            <table id="dataTable" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Data Submissão</th>
+                    </tr>
+                </thead>
+                <?php $doc->showAllDocumentsByType("monografia"); ?>
+            </table>
+       </div>
 
 
         <h2 class="mt-5">Teses</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Autor</th>
-                    <th>Data de Submissão</th>
-                </tr>
-            </thead>
-            <?php $doc->showAllDocumentsByType("tese"); ?>
-        </table>
+        <div class="col-md-12">
+            <table id="dataTable" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Data de Submissão</th>
+                    </tr>
+                </thead>
+                <?php $doc->showAllDocumentsByType("tese"); ?>
+            </table>
+        </div>
 
         <h2 class="mt-5">Dissertações</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Autor</th>
-                    <th>Data de Submissão</th>
-                </tr>
-            </thead>
-            <?php $doc->showAllDocumentsByType("dissertacao"); ?>
-        </table>
-    </div>
+        <div class="col-md-12">
+            <table id="dataTable" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Data de Submissão</th>
+                    </tr>
+                </thead>
+                <?php $doc->showAllDocumentsByType("dissertacao"); ?>
+            </table>
+        </div>
 
     <!-- Rodapé -->
     <footer class="bg-dark text-white text-center py-4">
@@ -167,6 +172,17 @@ $doc = new Document();
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+        $('#dataTable').DataTable( {      
+         "searching": false,
+         "paging": true, 
+         "info": false,         
+         "lengthChange":false 
+         } );
+                    } );
+    </script>
 </body>
 </body>
 </html>

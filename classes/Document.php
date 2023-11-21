@@ -71,9 +71,8 @@ class Document{
         }
     }
 
-    public function updateDocument(){
-
-        
+    public function updateDocument($fields = array(), $id = null){
+        return $this->_db->updatedoc($id, $fields);
     }
     public function deleteDocumentByID($id){
         return $this->_db->delete('document', array("id_doc","=",$id));
@@ -86,7 +85,7 @@ class Document{
             foreach ($documents->results() as $document) {
                 
                 echo "<tr>";
-                echo "<td> <a href='$document->arquivo' download>".$document->titulo."</a></td>";
+                echo "<td> <a href='$document->arquivo' target='_blank'>".$document->titulo."</a></td>";
                 echo "<td>".$document->autores."</td>";
                 echo "<td>".$document->data_submissao."</td>";
                 echo "</tr>";
@@ -104,7 +103,7 @@ class Document{
             foreach ($documents->results() as $document) {
                 
                 echo "<tr>";
-                echo "<td> <a href='$document->arquivo' download>".$document->titulo."</a></td>";
+                echo "<td> <a href='$document->arquivo' target='_blank'>".$document->titulo."</a></td>";
                 
                 echo "<td>".$document->autores."</td>";
                 echo "<td>".$document->tipo_trabalho."</td>";
