@@ -8,19 +8,12 @@ $data = $user->data();
 if (!$user->isLoggedIn()) {
     Redirect::to('login.php');
 }
-    if (Session::exists('delete_success')) {
-        echo '
-        <script>
-        window.alert("Documento Excluido Com Sucesso!")
-        </script>
-    ';
+    if (Session::exists('doc')) {
+      echo "<script> window.alert(".Session::flash('doc').")"."</script>";
+     
     }
-    if (Session::exists('delete_error')) {
-        echo '
-        <script>
-        window.alert("Documento Excluido Com Sucesso!")
-        </script>
-    ';
+    if (Session::exists('file')) {
+      echo "<script> window.alert(".Session::flash('file').")"."</script>";
     }
    
 

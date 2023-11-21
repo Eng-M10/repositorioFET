@@ -107,7 +107,7 @@ $doc = new Document();
         <!-- Preview de documentos carregados recentemente em forma de tabela -->
         <h2 class="mt-5">Monografias</h2>
         <div class="col-md-12">
-            <table id="dataTable" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+            <table id="dataTableMonografia"  class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Título</th>
@@ -122,7 +122,7 @@ $doc = new Document();
 
         <h2 class="mt-5">Teses</h2>
         <div class="col-md-12">
-            <table id="dataTable" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+            <table id="dataTableTese"  class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Título</th>
@@ -136,7 +136,7 @@ $doc = new Document();
 
         <h2 class="mt-5">Dissertações</h2>
         <div class="col-md-12">
-            <table id="dataTable" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+            <table id="dataTableDissertacao" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>Título</th>
@@ -172,18 +172,23 @@ $doc = new Document();
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="js/demo/datatables-demo.js"></script>
 
-    <script>
-        $(document).ready(function() {
-        $('#dataTable').DataTable( {      
-         "searching": false,
-         "paging": true, 
-         "info": false,         
-         "lengthChange":false 
-         } );
-                    } );
-    </script>
-</body>
+<script>
+    $(document).ready(function () {
+        $('#dataTableMonografia, #dataTableTese, #dataTableDissertacao').DataTable({
+            "searching": false,
+            "paging": true,
+            "info": false,
+            "lengthChange": false
+        });
+    });
+</script>
 </body>
 </html>
 

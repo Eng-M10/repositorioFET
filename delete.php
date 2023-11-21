@@ -10,10 +10,10 @@ if(Input::exists('get')){
     try{
       
         if($doc->deleteDocumentByID($_id)){
-            Session::flash('delete_success', 'Successfully deleted document!');
+            Session::flash('doc', 'Successfully deleted document!');
             
         }else{
-            Session::flash('delete_error', 'Error deleting document, please try again later!');
+            Session::flash('doc', 'Error deleting document, please try again later!');
         }
         Redirect::to('userpainel.php');
     }

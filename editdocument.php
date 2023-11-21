@@ -35,10 +35,10 @@ if (Input::exists()) {
                 'arquivo' => $upload_result
             ),$_id
         )){
-            Session::flash('file_update', 'Foi Atualizado com sucesso, agora pode verificar o documento!');
+            Session::flash('file', 'Foi Atualizado com sucesso, agora pode verificar o documento!');
             Redirect::to('userpainel.php');
         }else{
-            Session::flash('file_update_error', 'Foi Atualizado com sucesso, agora pode verificar o documento!');
+            Session::flash('file', 'Erro ao Atualizar o Documento!');
             Redirect::to('userpainel.php');
         }
         
