@@ -38,6 +38,7 @@ $doc = new Document();
                 </tbody>
             </table>
         </div>
+        <a href="index.php" class="btn btn-secondary">Voltar</a>
     </div>
 
     <script src="vendor/jquery/jquery.min.js"></script>

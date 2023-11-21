@@ -29,7 +29,7 @@ $doc = new Document();
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <div>
-                <a class="navbar-brand" href="https://up.ac.mz">
+             <span><a class="navbar-brand" href="https://up.ac.mz">
                     <img src="./resources/img/logoup.png" alt="logo da up-maputo" width="100" height="100">
                 </a>
             </div>
@@ -37,7 +37,7 @@ $doc = new Document();
             <div>
             <a class="navbar-brand" href="https://fet.up.ac.mz">
                 <img src="./resources/img/logofet.png" alt="logotipo da fet" class="w-20 h-20">
-            </a>
+            </a></span>
             </div>
             <!-- Botão do menu hamburguês -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -96,17 +96,11 @@ $doc = new Document();
         <p class="lead">Encontre e explore uma vasta coleção de artigos científicos da Faculdade de Engenharias e Tecnologias.</p>
 
         <!-- Campo de pesquisa -->
-        
-        <form action="pesquisar.php" method="GET">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control me-0.95 rounded" placeholder="Pesquisar artigos científicos">
-                <div class="input-group-append">
-                <input class="btn btn-primary" type="submit" value="Pesquisar">
-            
-                </div>
-            </div>
-        </form>
-
+        <div class="container mt-2">
+            <p class="text-center">Encontre todos os trabalhos clicando Aqui. <span class="text-center"> <a class="btn btn-primary"  href="pesquisar.php">Pesquisar</a> <span></p>
+           
+        </div>
+           
         <!-- Cards de informações -->
         
 

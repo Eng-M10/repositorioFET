@@ -8,19 +8,16 @@ class Document{
         $this->_db = DB::getInstance();
     }
 
-    public function getDocumentID(){
-        return $this->_db->get("document",);
-    }
-
     public function getAllDocuments(){
             return $this->_db->get("document",array());
     }
 
     public function getDocumentByType($name){
             $name = ucfirst(strtolower($name));
-            
             return $this->_db->get("document",array("tipo_trabalho", '=', $name));
     }
+
+
     public function getDocumentByUserID($id){
 
         return $this->_db->get("document",array("id_user", '=', $id));
@@ -39,6 +36,9 @@ class Document{
             throw new Exception('Ocorreu um problema ao Adicionar o Documento!');
         }
     }
+    public function deleteDocumentByID($id){
+        $this->_db->delete("document",array("id"=>$id));
+    }
 
     public function showAllDocumentsByType($type){
         $documents = $this->getDocumentByType($type);
@@ -47,7 +47,7 @@ class Document{
             foreach ($documents->results() as $document) {
                 
                 echo "<tr>";
-                echo "<td>".$document->titulo."</td>";
+                echo "<td> <a href='$document->arquivo' download>".$document->titulo."</a></td>";
                 echo "<td>".$document->autores."</td>";
                 echo "<td>".$document->data_submissao."</td>";
                 echo "</tr>";
@@ -65,12 +65,14 @@ class Document{
             foreach ($documents->results() as $document) {
                 
                 echo "<tr>";
-                echo "<td>".$document->titulo."</td>";
+                echo "<td> <a href='$document->arquivo' download>".$document->titulo."</a></td>";
+                
                 echo "<td>".$document->autores."</td>";
                 echo "<td>".$document->tipo_trabalho."</td>";
                 echo "<td>".$document->data_submissao."</td>";
                 echo "</tr>";
             }
+
            
         } else {
             echo "<li>No documents found.</li>";
@@ -88,6 +90,8 @@ class Document{
                 echo "<td>".$document->titulo."</td>";
                 echo "<td>".$document->tipo_trabalho."</td>";
                 echo "<td>".$document->data_submissao."</td>";
+                echo "<td><a href ='editdocument.php'><i class='fa-regular fa-pen-to-square fa-bounce'></i></a></td>";
+                echo "<td><a href='delete.php?id=$document->id'><i class='bi bi-trash'></i></a></td>";
                 echo "</tr>";
             }
             echo "</tbody>";
