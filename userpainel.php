@@ -8,6 +8,27 @@ $data = $user->data();
 if (!$user->isLoggedIn()) {
     Redirect::to('login.php');
 }
+
+if(Input::exists('get')) {
+
+    if (Input::get('deleted') == 'successfully') {
+        echo '
+            <script>
+            window.alert("documento apadado!")
+            </script>
+        ';
+    }
+    else if (Input::get('deleted') == 'error'){
+        echo '
+        <script>
+        window.alert("Falhou, Ocorreu Algum problema!")
+        </script>
+            ';
+    }
+
+
+
+}
 ?>
 
 <!DOCTYPE html>

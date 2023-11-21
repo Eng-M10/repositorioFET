@@ -23,13 +23,9 @@ class Document{
         return $this->_db->get("document",array("id_user", '=', $id));
 
     }
-    public function deleteDocument($name){
-            return $this->_db->delete("document",array("titulo"=>$name));
-    }
-
-    public function updateDocument($name,$fields){
-            return $this->_db->update("document",array("titulo"=>$name),$fields);
-    }
+    /*public function updateDocument($name,$fields){
+            return $this->_db->update("document",array("id_doc"=>$id),$fields);
+    }*/
 
     public function createDocument($fields){
         if (!$this->_db->insert('document', $fields)) {
@@ -37,7 +33,7 @@ class Document{
         }
     }
     public function deleteDocumentByID($id){
-        $this->_db->delete("document",array("id"=>$id));
+        return $this->_db->delete('document', array("id_doc","=",$id));
     }
 
     public function showAllDocumentsByType($type){
@@ -82,6 +78,7 @@ class Document{
     public function showAllDocumentsByUserID($id){
 
         $documents = $this->getDocumentByUserID($id);
+    
         if ($documents->count() > 0) {
             echo "<tbody>";
             foreach ($documents->results() as $document) {
@@ -90,8 +87,9 @@ class Document{
                 echo "<td>".$document->titulo."</td>";
                 echo "<td>".$document->tipo_trabalho."</td>";
                 echo "<td>".$document->data_submissao."</td>";
-                echo "<td><a href ='editdocument.php'><i class='fa-regular fa-pen-to-square fa-bounce'></i></a></td>";
-                echo "<td><a href='delete.php?id=$document->id'><i class='bi bi-trash'></i></a></td>";
+
+                echo "<td><span><a href ='editdocument.php'><i class='bi bi-pencil-square'></i></a></span> | <span><a href='delete.php?id={$document->id_doc}'><i class='bi bi-trash'></i></a></span>
+                </td>";
                 echo "</tr>";
             }
             echo "</tbody>";

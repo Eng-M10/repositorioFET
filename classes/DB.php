@@ -50,7 +50,7 @@ class DB
         return $this;
     }
 
-    private function action($action, $table, $where = array(),$coluna = array())
+    private function action($action, $table, $where = array())
     {
         if (count($where) === 3) {
             $operators = array('=', '>', '<', '>=', '<=');
@@ -68,13 +68,6 @@ class DB
         }
         if(empty($where)){
             $sql = "{$action} FROM {$table}";
-            if (!$this->query($sql)->error()) {
-                return $this;
-            }
-        }
-        if(!empty($coluna)){
-            $coluna = implode(', ', $coluna);
-            $sql = "{$action} {$coluna} FROM {$table}";
             if (!$this->query($sql)->error()) {
                 return $this;
             }
@@ -138,12 +131,6 @@ class DB
         return false;
     }
 
-//Create a table and the process of Upload the documents 
-
-//Same to articles but we need to get 
-    public function getArticlesByNumer(){
-
-    }
 
     public function results()
     {
