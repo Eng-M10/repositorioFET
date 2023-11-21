@@ -2,7 +2,30 @@
 
 class Document{
     private $_db; 
+    private $_doctitle;
+    private $_docID;
+    private $_docautor;
+    private $_docresumo;
+    private $_doctipo;
+    private $_docarquivo;
 
+    public function getTitle(){
+        return $this->_doctitle;
+    }
+    public function getAutor(){
+        return $this->_docautor;
+    }
+    public function getResumo(){
+        return $this->_docresumo;
+    }
+
+    public function getTipo(){
+        return $this->_doctipo;
+    }
+
+    public function getArquivo(){
+        return $this->_docarquivo;
+    }
 
     public function __construct(){
         $this->_db = DB::getInstance();
@@ -16,17 +39,32 @@ class Document{
             $name = ucfirst(strtolower($name));
             return $this->_db->get("document",array("tipo_trabalho", '=', $name));
     }
+    public function getDocumentByID($id){
 
+            return $this->_db->get("document",array("id_doc", '=', $id));
+    }
+
+    public function documentData($id){
+        $document = $this->getDocumentByID($id);
+
+        if ($document->count() > 0) {
+         
+            foreach ($document->results() as $document) {
+                $this->_docID = $document->id_doc;
+                $this->_doctitle = $document->titulo;
+                $this->_docautor = $document->autores;
+                $this->_docresumo = $document->resumo;
+                $this->_doctipo = $document->tipo_trabalho;
+                $this->_docarquivo = $document->arquivo;
+            }
+        }
+    }
 
     public function getDocumentByUserID($id){
 
         return $this->_db->get("document",array("id_user", '=', $id));
 
     }
-    /*public function updateDocument($name,$fields){
-            return $this->_db->update("document",array("id_doc"=>$id),$fields);
-    }*/
-
     public function createDocument($fields){
         if (!$this->_db->insert('document', $fields)) {
             throw new Exception('Ocorreu um problema ao Adicionar o Documento!');
@@ -88,7 +126,7 @@ class Document{
                 echo "<td>".$document->tipo_trabalho."</td>";
                 echo "<td>".$document->data_submissao."</td>";
 
-                echo "<td><span><a href ='editdocument.php'><i class='bi bi-pencil-square'></i></a></span> | <span><a href='delete.php?id={$document->id_doc}'><i class='bi bi-trash'></i></a></span>
+                echo "<td><span><a href ='editdocument.php?id={$document->id_doc}'><i class='bi bi-pencil-square'></i></a></span> | <span><a href='delete.php?id={$document->id_doc}'><i class='bi bi-trash'></i></a></span>
                 </td>";
                 echo "</tr>";
             }

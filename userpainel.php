@@ -8,60 +8,114 @@ $data = $user->data();
 if (!$user->isLoggedIn()) {
     Redirect::to('login.php');
 }
-
-if(Input::exists('get')) {
-
-    if (Input::get('deleted') == 'successfully') {
-        echo '
-            <script>
-            window.alert("documento apadado!")
-            </script>
-        ';
-    }
-    else if (Input::get('deleted') == 'error'){
+    if (Session::exists('delete_success')) {
         echo '
         <script>
-        window.alert("Falhou, Ocorreu Algum problema!")
+        window.alert("Documento Excluido Com Sucesso!")
         </script>
-            ';
+    ';
+    }
+    if (Session::exists('delete_error')) {
+        echo '
+        <script>
+        window.alert("Documento Excluido Com Sucesso!")
+        </script>
+    ';
+    }
+   
+
+?>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Inclua os arquivos do Bootstrap (CSS e JS) -->
+  <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <title>Painel de Utilizador</title>
+  <style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  #sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: white;
+  }
+
+  #sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+
+  #sidebar a:hover {
+    background-color: #555;
+  }
+
+  #content {
+    margin-left: 250px;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 60px);
+  }
+  @media (max-width: 768px) {
+    #sidebar {
+      display: none;
     }
 
-
-
-}
-?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel do Usuário</title>
-    <link href="../../Resourses/css/css.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    #content {
+      margin-left: 0;
+    }
+  }
+</style>
 </head>
-<body class="bg-gray-100 font-sans flex">
+<body>
 
-<!-- Barra Lateral à Esquerda -->
-<div class="w-25 bg-gray-300 p-4 h-100 bg-gray-300">
-    <div class="w-100 h-12 mb-4">
-        <img src="../../Resourses/img/logo-fet.png" alt="">    
-    </div>
-    <ul class="list-group">
-        <li class="list-group-item"><button id="view-documents" class="w-100 btn btn-primary">Meus Carregamentos</button></li>
-        <li class="list-group-item"><button id="add-document" class="w-100 btn btn-primary">Adicionar Documento</button></li>
-        <li class="list-group-item"><button id="profile-info" class="w-100 btn btn-primary">Ver informações do Perfil</button></li>
-        <li class="list-group-item"><a id="backTo" class="w-100 btn btn-danger" href="index.php">Voltar a Página Inicial</a></li>
-    </ul>
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <button class="btn btn-dark d-md-none" id="sidebarToggle">
+  <i class="bi bi-list"></i>
+</button>
+    <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+      <div class="position-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="mostrarConteudo('document-list')"><i class="bi bi-grid-3x3-gap-fill"> Home</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="mostrarConteudo('add-document-form')"><i class="bi bi-file-earmark-plus-fill"> Adicionar</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="mostrarConteudo('user-info')"><i class="bi bi-person-circle"> Perfil</i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php"><i class="bi bi-chevron-left"> Voltar</i></a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
 
-<!-- Conteúdo Principal à Direita -->
-<div class="w-75 p-4">
-    <h1 class="text-3xl font-semibold mb-4 text-center">Painel do Utilizador</h1>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-y:auto" id="content">
+      <h2>Bem-vindo ao seu painel</h2>
 
-    <!-- Formulário de Adicionar Documento -->
-    <form action="submitdocument.php" method="POST" enctype="multipart/form-data" class="add-document-form bg-white p-3 rounded shadow-md" style="display: none;">
+      <div id="add-document-form" class="d-none">
+      <form action="submitdocument.php" method="POST" enctype="multipart/form-data" class="bg-white p-3 rounded shadow-md" >
         <h2 class="text-xl font-semibold mb-3">Adicionar Novo Carregamento</h2>
         <div class="mb-4">
             <label for="document-title" class="block text-gray-700">Título/Tema do Trabalho:</label>
@@ -93,10 +147,10 @@ if(Input::exists('get')) {
         <input type="hidden" name="token" value="<?= Token::generete(); ?>">
         <input type="submit" class="btn btn-primary rounded hover:bg-blue-600" value="Adicionar Carregamento">
     </form>
+      </div>
 
-    <!-- Lista de Documentos -->
-    <div class="document-list space-y-4">
-        <h2 class="text-xl font-semibold mb-4">Seus documentos</h2>
+      <div id="document-list" >
+      <h2 class="text-xl font-semibold mb-4">Seus documentos</h2>
         <table class="table table-bordered table-striped">
             <thead>       
                 <tr>
@@ -108,27 +162,44 @@ if(Input::exists('get')) {
             </thead>
             <?php $doc->showAllDocumentsByUserID($data->id); ?>
         </table>
-    </div>
+      </div>
 
-
+      <div id="user-info" class="d-none">
+      <p>Nome de Utilizador: <?= $data->username ?></p>
+        <p>Nome Completo: <?= $data->name ?></p>
+        <p>Email: <?= $data->email ?></p>
+        <p>Departamento: <?= $data->departamento ?></p>
+        <p>Entidade: <?= $data->entidade ?></p>
+        <hr>
+        <a href="update.php" class="btn btn-primary">Atualizar Informações</a>
+      </div>
+    </main>
+  </div>
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-      document.getElementById("view-documents").addEventListener("click", function() {
-        document.querySelector(".add-document-form").style.display = "none";
-        document.querySelector(".document-list").style.display="block"
+document.getElementById('sidebarToggle').addEventListener('click', function() {
+    var sidebar = document.getElementById('sidebar');
+    var content = document.getElementById('content');
+
+    // Adiciona ou remove a classe 'hidden' para alternar a visibilidade da barra lateral
+    sidebar.classList.toggle('hidden');
+    
+    // Ajusta a margem do conteúdo à direita conforme a visibilidade da barra lateral
+    content.style.marginLeft = sidebar.classList.contains('hidden') ? '0' : '250px';
+  });
+
+  function mostrarConteudo(conteudoId) {
+    // Oculta todos os elementos de conteúdo
+    var elementosConteudo = document.querySelectorAll('#content > div');
+    elementosConteudo.forEach(function (elemento) {
+      elemento.classList.add('d-none');
     });
 
-    document.getElementById("add-document").addEventListener("click", function() {
-        document.querySelector(".add-document-form").style.display = "block";
-        document.querySelector(".document-list").style.display="none"
-    });
-
-    document.getElementById("profile-info").addEventListener("click", function() {
-        window.location.href = "http://localhost/repositorioFET/update.php";
-    });
+    // Mostra o elemento de conteúdo correspondente ao ID
+    var elementoSelecionado = document.getElementById(conteudoId);
+    elementoSelecionado.classList.remove('d-none');
+  }
 </script>
 
 </body>

@@ -49,22 +49,42 @@
     }
 ?>
 
-<form action="" method="post">
-    <div class="field">
-        <label for="password_current">Current Password</label>
-        <input type="password" name="password_current" id="password_current">
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Your Form Title</title>
+</head>
+<body>
 
-    <div class="field">
-        <label for="password_new">New Password</label>
-        <input type="password" name="password_new" id="password_new">
-    </div>
+<div class="container mt-5">
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="password_current">Password Atual</label>
+            <input type="password" class="form-control" name="password_current" id="password_current" required>
+        </div>
 
-    <div class="field">
-        <label for="password_new_again">Password Again</label>
-        <input type="password" name="password_new_again" id="password_new_again">
-    </div>
+        <div class="form-group">
+            <label for="password_new">Nova Password</label>
+            <input type="password" class="form-control" name="password_new" id="password_new" required>
+        </div>
 
-    <input type="submit" value="Change">
-    <input type="hidden" name="token" value="<?=Token::generete()?>">
-</form>
+        <div class="form-group">
+            <label for="password_new_again">Confirma a nova password</label>
+            <input type="password" class="form-control" name="password_new_again" id="password_new_again" required>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Change">
+        <a href="update.php" class="btn btn-secondary" >Voltar</a>
+        <input type="hidden" name="token" value="<?= Token::generete() ?>">
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

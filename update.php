@@ -67,6 +67,8 @@ if (Input::exists()) {
         </div>
 
         <input type="submit" class="btn btn-primary" value="Update">
+        <a href="userpainel.php"class="btn btn-secondary">voltar</a>
+        <a href="userpainel.php"class="btn btn-primary">Alterar a Password</a>
         <input type="hidden" name="token" value="<?= Token::generete() ?>">
     </form>
 </div>
