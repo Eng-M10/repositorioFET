@@ -21,8 +21,7 @@ $doc = new Document();
     <title>Repositório - Faculdade de Engenharias e Tecnologias</title>
     <link rel="shortcut icon" href="./resources/img/logoup.png" >
     <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./resorces/css/bootstrap-icons.css">
 </head>
 <body class="bg-light">
     <!-- Barra de navegação -->

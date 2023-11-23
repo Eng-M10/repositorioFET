@@ -88,7 +88,7 @@ if (!$user->isLoggedIn()) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Inclua os arquivos do Bootstrap (CSS e JS) -->
   <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./resorces/css/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <title>Painel de Utilizador</title>
   <style>

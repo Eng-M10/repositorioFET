@@ -78,7 +78,7 @@ if (Input::exists()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar</title>
     <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./resorces/css/bootstrap-icons.css">
     <style>
         body {
             display: flex;
