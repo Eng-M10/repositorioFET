@@ -91,6 +91,14 @@ class Document{
         return $this->_db->updatedoc($id, $fields);
     }
     public function deleteDocumentByID($id){
+        $fata =$this->_db->get('document', array("id_doc", '=',$id));
+        $doc = $fata->results();
+        $file_name = realpath($doc[0]->arquivo);
+
+        if (file_exists($file_name)) {
+            unlink($file_name);
+        }
+
         return $this->_db->delete('document', array("id_doc","=",$id));
     }
 
@@ -181,7 +189,7 @@ class Document{
     
         // Mover o arquivo para o diretório de upload
         if (move_uploaded_file($file['tmp_name'], $target_path)) {
-            $url = "http://localhost/repositorioFET/resources/pdf/" . $unique_filename;
+            $url = __DIR__."../resources/pdf". $unique_filename;
             return $url;
         } else {
             return "error";

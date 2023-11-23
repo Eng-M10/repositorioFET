@@ -9,7 +9,7 @@ if(Input::exists('get')){
     $doc = new Document();
     try{
       
-        if($doc->deleteDocumentByID($_id)){
+       if($doc->deleteDocumentByID($_id)){
             Session::flash('doc', 'Successfully deleted document!');
             
         }else{
