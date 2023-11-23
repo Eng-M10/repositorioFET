@@ -140,6 +140,9 @@ class User
         return $this->_isLoggedIn;
     }
 
+    public function deleteUsertByID($id){
+        return $this->_db->delete('users', array("id","=",$id));
+    }
 
     public function showAllUsers(){
     $users = $this->_db->get("users", array());
@@ -160,10 +163,11 @@ class User
                 $group = "Utilizador";
              }
             echo "<td>".$group."</td>";
+        echo "<td><a href='deleteuser.php?id={$_user->id}'><i class='bi bi-trash'></i></a></td>";
             echo "</tr>";
          }
      } else {
-         echo "<li>No users found.</li>";
+         echo "<tr>No users found.</tr>";
      }
          } 
 

@@ -103,6 +103,7 @@ if (Input::exists()) {
   <!-- Inclua os arquivos do Bootstrap (CSS e JS) -->
      <link rel="stylesheet" href="./resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="./resorces/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <title>Painel de Utilizador</title>
   <style>
@@ -350,6 +351,7 @@ if (Input::exists()) {
                             <th>Departamento</th>
                             <th>Registado</th>
                             <th>Nivel de Acesso</th>
+                            <th>Apagar</th>
                         </tr>
                     </thead>
                         
