@@ -141,5 +141,30 @@ class User
     }
 
 
+    public function showAllUsers(){
+    $users = $this->_db->get("users", array());
+    
+    if ($users->count() > 0) {
+        $users =$users->results();
+       foreach ($users as $_user) {
 
-}
+        echo "<tr>";
+        echo "<td>".$_user->username."</td>";
+        echo "<td>".$_user->name."</td>";
+        echo "<td>".$_user->entidade."</td>";
+        echo "<td>".$_user->departamento."</td>";
+           echo "<td>".$_user->joined."</td>";
+            if($_user->group == 2){
+                $group = "Administrador";
+            }else{
+                $group = "Utilizador";
+             }
+            echo "<td>".$group."</td>";
+            echo "</tr>";
+         }
+     } else {
+         echo "<li>No users found.</li>";
+     }
+         } 
+
+    }

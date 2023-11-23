@@ -50,7 +50,9 @@ class DB
         return $this;
     }
 
-    private function action($action, $table, $where = array())
+
+
+    private function action($action, $table, $where = array(), $fields=array())
     {
         if (count($where) === 3) {
             $operators = array('=', '>', '<', '>=', '<=');
@@ -72,6 +74,8 @@ class DB
                 return $this;
             }
         }
+
+
         return false;
     }
 
@@ -83,6 +87,10 @@ class DB
     public function delete($table, $where)
     {
         return $this->action("DELETE", $table, $where);
+    }
+
+    public function countData($table, $where){
+        return $this->action("SELECT COUNT(*) ", $table, $where);
     }
 
     public function insert($table, $fields = array())

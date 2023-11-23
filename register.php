@@ -21,7 +21,7 @@ if (Input::exists()) {
             ),
             'password_again' => array(
                 'required' => true,
-                'matches' => 'password',
+                'matches' => 'password',z
             ),
             'name' => array(
                 'required' => true,
@@ -172,13 +172,13 @@ if (Input::exists()) {
                     <select name="departamento" id="type"  class="form-select form-select-sm" aria-label="small select example" >
                     <option value="Informatica">Informatica</option>
                     <option value="Eletronica">Eletronica</option>
-                    <option value="Funcionario">Funcionario</option>
-                    <option value="Outro">Outro</option>
+                    <option value="Agro-Pecuaria">Agro-Pecuaria</option>
+                    <option value="Agroprocessamento">Agroprocessamento</option>
+                    <option value="Edução-visual">Edução-visual</option>
+                    <option value="Design">Design</option>
+                  </select>
                   </select>
                 </div>
-
-
-
 
 
             <div class="input-group mb-3">

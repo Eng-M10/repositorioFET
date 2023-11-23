@@ -71,6 +71,22 @@ class Document{
         }
     }
 
+    public function getTotal(){
+        $t = $this->_db->countData('document', array());
+        return $t->results();
+    }
+    public function getTotalbyType($type){
+        $type = ucfirst(strtolower($type));
+     
+           $t= $this->_getbytype($type);
+           return $t->results();
+    }
+
+    private function _getbytype($type){
+        return $this->_db->countData('document', array("tipo_trabalho","=",$type));
+    }
+
+    
     public function updateDocument($fields = array(), $id = null){
         return $this->_db->updatedoc($id, $fields);
     }
