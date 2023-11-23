@@ -163,8 +163,8 @@ $doc = new Document();
                 <div class="col-md-6">
                     <h4>Contato</h4>
                     <address>
-                        <p><strong>Email:</strong> info@repositoriocientifico.com</p>
-                        <p><strong>Telefone:</strong> (123) 456-7890</p>
+                        <p><strong>Email:</strong>upfet@gmail.com</p>
+                        <p><strong>Telefone:</strong>(+258) 84 20 07 116</p>
                     </address>
                 </div>
             </div>

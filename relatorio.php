@@ -29,6 +29,8 @@ class Relatorio extends FPDF {
         
         // Adicione o nome do sistema abaixo da imagem
         $this->SetFont('Arial', 'B', 12);
+        $this->Cell(0, 10,utf8_decode('Universidade Pedagógica de Maputo'),0,1,'C');
+        $this->Cell(0, 20,utf8_decode('Faculdade de Engenharias e Tecnologias'),0,1,'C');
         $this->Cell(0, 20, utf8_decode('Repositório Científico da FET'), 0, 1, 'C');
 
        $this->Image('./resources/img/logoup.png', 165, 15, 20);
@@ -44,6 +46,10 @@ Ao explorar a tabela estatística fornecida, é possível visualizar de forma cl
     }
 
     function Footer() {
+        $this->SetFont('Arial', '', 8);
+        $this->MultiCell(0,12,utf8_decode('Campus da Lhanguene,Av. do Trabalho n° 248, Maputo - Moçambique
+(+258) 84 20 07 116
+upfet@gmail.com'));
         $this->SetY(-15);
         $this->SetFont('Arial', 'I', 8);
         $this->Cell(0, 10, utf8_decode('Página ') . $this->PageNo(), 0, 0, 'C');
