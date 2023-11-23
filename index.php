@@ -58,6 +58,7 @@ $doc = new Document();
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item btn btn-primary" href="admin.php">Painel do Administrador</a></li>
+                                <li><a class="dropdown-item btn btn-primary"  href="update.php">Atualizar Informações</a>
                                 <li><a class="dropdown-item btn btn-secondary" href="logout.php">Sair</a></li>
                   
                             </ul>
