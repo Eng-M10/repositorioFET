@@ -107,79 +107,52 @@ if (Input::exists()) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <title>Painel de Utilizador</title>
   <style>
-  body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
 
-  #sidebar {
-    height: 100%;
-    width: 250px;
-    position: fixed;
-    background-color: #333;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    color: white;
-  }
-
-  #sidebar a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 20px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-  }
-
-  #sidebar a:hover {
-    background-color: #555;
-  }
-
-  #content {
-    margin-left: 250px;
-    padding: 20px;
-    overflow-y: auto;
-    max-height: calc(100vh - 60px);
-  }
-  @media (max-width: 768px) {
     #sidebar {
-      display: none;
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      background-color: #333;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+      color: white;
+    }
+
+    #sidebar a {
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    #sidebar a:hover {
+      background-color: #555;
     }
 
     #content {
-      margin-left: 0;
+      margin-left: 250px;
+      padding: 20px;
+      overflow-y: auto;
+      max-height: calc(100vh - 60px);
     }
-  }
-</style>
 
-
-<script>
-    document.getElementById('sidebarToggle').addEventListener('click', function() {
-        var sidebar = document.getElementById('sidebar');
-        var content = document.getElementById('content');
-
-        // Adiciona ou remove a classe 'hidden' para alternar a visibilidade da barra lateral
-        sidebar.classList.toggle('hidden');
-        
-        // Ajusta a margem do conteúdo à direita conforme a visibilidade da barra lateral
-        content.style.marginLeft = sidebar.classList.contains('hidden') ? '0' : '250px';
-    });
-
-    function mostrarConteudo(conteudoId) {
-        // Oculta todos os elementos de conteúdo
-        var elementosConteudo = document.querySelectorAll('#content > div');
-        elementosConteudo.forEach(function (elemento) {
-        elemento.classList.add('d-none');
-        });
-
-        // Mostra o elemento de conteúdo correspondente ao ID
-        var elementoSelecionado = document.getElementById(conteudoId);
-        elementoSelecionado.classList.remove('d-none');
+    #sidebarToggle {
+      z-index:  10000;
     }
-</script>
+
+    
+  </style>
+
+
 
 </head>
 
@@ -378,6 +351,37 @@ if (Input::exists()) {
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="js/demo/datatables-demo.js"></script>
+    <script>
+    document.getElementById('sidebarToggle').addEventListener('click', function () {
+      var sidebar = document.getElementById('sidebar');
+      var content = document.getElementById('content');
+
+      // Adiciona ou remove a classe 'hidden' para alternar a visibilidade da barra lateral
+      sidebar.classList.toggle('d-none');
+      // Ajusta a margem do conteúdo à d ireita conforme a visibilidade da barra lateral
+      var margin = window.getComputedStyle(content).getPropertyValue('margin-left');
+      content.style.marginLeft = (margin == '250px') ? '0px' : '250px';
+      
+    });
+
+    function removeMargin() {
+      
+    }
+
+    function mostrarConteudo(conteudoId) {
+      // Oculta todos os elementos de conteúdo
+      var elementosConteudo = document.querySelectorAll('#content > div');
+      elementosConteudo.forEach(function (elemento) {
+        elemento.classList.add('d-none');
+      });
+
+      // Mostra o elemento de conteúdo correspondente ao ID
+      var elementoSelecionado = document.getElementById(conteudoId);
+      elementoSelecionado.classList.remove('d-none');
+    }
+  </script>
+
 
 </body>
 </html>
+
