@@ -50,7 +50,7 @@ $doc = new Document();
                     
                          <?php if ($user->isLoggedIn()): ?> 
     
-                            <?php if ($user->hasPermission('admin')): ?>
+                            <?php if ($user->hasPermission()): ?>
                             <!-- For Admin -->
                             <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -9,7 +9,7 @@ $dissertacao = $doc->getTotalbyType('dissertacao');
  
 
 if ($user->isLoggedIn()) {
-   if(!$user->hasPermission('admin')){
+   if($user->hasPermission()){
     Redirect::to('index.php');
    }
         

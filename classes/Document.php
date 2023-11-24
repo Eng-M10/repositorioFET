@@ -137,7 +137,7 @@ class Document{
 
            
         } else {
-            echo "<li>No documents found.</li>";
+            echo "<tr>No documents found.</tr>";
         }
     }
 

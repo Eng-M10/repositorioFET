@@ -20,16 +20,11 @@ $GLOBALS['config'] = [
 ];  
 
 spl_autoload_register(function($class) {
-
-    if(file_exists('classes/'.$class.'.php')){
-    require 'classes/'. $class.'.php';}
-    else{
-        require 'classes/fpdf/'. $class.'.php';   
-    }
-
+    require 'classes/'. $class.'.php';
 });
 
 require_once 'functions/sanitize.php';
+require_once 'classes/fpdf/fpdf.php';
 
 if (Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('session/session_name'))) {
     $hash = Cookie::get(Config::get('remember/cookie_name'));

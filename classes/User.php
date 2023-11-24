@@ -101,19 +101,10 @@ class User
         return false;
     }
 
-    public function hasPermission($key)
+    public function hasPermission()
     {
-        $group = $this->_db->get('groups', array('id', '=', $this->data()->group));
-
-        if ($group->count()) {
-            $permissions = json_decode($group->first()->permissions, true);
-
-            if (isset($permissions[$key])) {
-                if ($permissions[$key] == true) {
-                    return true;
-                }
-            }
-
+       if($this->data()->group == 2){
+            return true;
         }
 
         return false;

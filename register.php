@@ -141,19 +141,19 @@ if (Input::exists()) {
                     <span class="input-group-text">
                         <i class="bi bi-person"></i>
                     </span>
-                <input type="text" class="form-control" name="username" placeholder="Username" id="username" value="<?= escape(Input::get('username')) ?>" autocomplete="off">
+                <input type="text" class="form-control" required name="username" placeholder="Username" id="username" value="<?= escape(Input::get('username')) ?>" autocomplete="off">
             </div>
             <div class="input-group mb-3">
                     <span class="input-group-text">
                         <i class="bi bi-person"></i>
                     </span>
-                <input type="text" class="form-control" name="email" placeholder="Email" id="email" value="<?= escape(Input::get('email')) ?>" autocomplete="off">
+                <input type="text" class="form-control" name="email" placeholder="Email" required id="email" value="<?= escape(Input::get('email')) ?>" autocomplete="off">
             </div>
             <div class="input-group mb-3">
                     <span class="input-group-text">
                         <i class="bi bi-person"></i>
                     </span>
-                <input type="text" class="form-control" placeholder="Name" name="name" id="name" value="<?= escape(Input::get('name')) ?>">
+                <input type="text" class="form-control" placeholder="Name" name="name" id="name" required value="<?= escape(Input::get('name')) ?>">
             </div>
             <div class="input-group mb-3 d-flex">
                     <span class="input-group-text">
@@ -186,13 +186,13 @@ if (Input::exists()) {
                     <span class="input-group-text">
                         <i class="bi bi-person"></i>
                     </span>
-                <input type="password" class="form-control" placeholder="Password" name = "password"  id="password">
+                <input type="password" class="form-control" required placeholder="Password" name = "password"  id="password">
             </div>
             <div class="input-group mb-3">
                     <span class="input-group-text">
                         <i class="bi bi-person"></i>
                     </span>
-                <input type="password" class="form-control" placeholder="Confirm password" name="password_again" id="password_again">
+                <input type="password" class="form-control" required placeholder="Confirm password" name="password_again" id="password_again">
             </div>
       
             <input type="hidden" name="token" value="<?= Token::generete() ?>">
